@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 const ProjectsSection = () => {
   const projects = [
@@ -10,35 +9,40 @@ const ProjectsSection = () => {
       title: "Data Analysis Tool",
       description: "A Python-based data analysis tool for processing and visualizing large datasets.",
       technologies: ["Python", "Pandas", "Matplotlib"],
-      gradient: "from-blue-500 to-purple-600"
+      gradient: "from-blue-500 to-purple-600",
+      github: "https://github.com/adiraj66132/Data-Analysis-Tool"
     },
     {
       id: 2,
       title: "Inventory Management System",
       description: "A simple and interactive Inventory Management System built in C using the ncurses library.",
       technologies: ["C/C++"],
-      gradient: "from-green-500 to-teal-600"
+      gradient: "from-green-500 to-teal-600",
+      github: "https://github.com/adiraj66132/Inventory-Management-System"
     },
     {
       id: 3,
       title: "Algorithm Visualizer",
       description: "An interactive tool for visualizing various algorithms implemented in C++.",
       technologies: ["C++", "SFML", "Algorithms"],
-      gradient: "from-purple-500 to-pink-600"
+      gradient: "from-purple-500 to-pink-600",
+      github: "https://github.com/adiraj66132/algorithm-visualizer"
     },
     {
       id: 4,
       title: "BTD Union: The Elite Squad",
       description: "A concept site for Bloons Tower Defense Union, showcasing dynamic UI design and smooth transitions",
       technologies: ["Vite", "TypeScript", "Tailwind CSS", "React", "shadcn/ui"],
-      gradient: "from-orange-500 to-red-600"
+      gradient: "from-orange-500 to-red-600",
+      github: "https://github.com/adiraj66132/btd-union"
     },
     {
       id: 5,
       title: "GTA-6 Demo App",
       description: "GTA 6 Demo Page – A sleek and interactive concept demo built with modern web technologies.",
       technologies: ["Vite", "TypeScript", "Tailwind CSS", "React", "shadcn/ui"],
-      gradient: "from-indigo-500 to-blue-600"
+      gradient: "from-indigo-500 to-blue-600",
+      github: "https://github.com/adiraj66132/GTA6-DEMO-WEBAPP"
     },
     {
       id: 6,
@@ -46,7 +50,7 @@ const ProjectsSection = () => {
       description: "A high-performance, dark-themed digital cluster UI inspired by the Porsche 911 GT3 RS.",
       technologies: ["Vite", "TypeScript", "Tailwind CSS", "React", "shadcn/ui"],
       gradient: "from-gray-600 to-gray-800",
-      liveDemo: "porsche-display.netlify.app"
+      github: "https://github.com/adiraj66132/porsche"
     }
   ];
 
@@ -96,15 +100,17 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {projects.map((project) => (
+          {projects.map((project, idx) => (
             <motion.div
               key={project.id}
               variants={cardVariants}
               whileHover={{ 
-                scale: 1.05,
-                rotateY: 5,
+                scale: 1.07,
+                rotateY: 8,
                 z: 50,
+                boxShadow: "0 12px 32px 0 rgba(80, 120, 255, 0.18)",
               }}
+              transition={{ type: 'spring', stiffness: 220, damping: 18 }}
               className="group relative"
             >
               <div className="relative p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-gray-700 hover:border-gray-600 transition-all duration-300 h-full">
@@ -129,17 +135,7 @@ const ProjectsSection = () => {
                     {project.description}
                   </p>
 
-                  {project.liveDemo && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      className="mb-4 p-2 bg-blue-500/10 border border-blue-500/20 rounded-lg"
-                    >
-                      <p className="text-blue-400 text-sm">
-                        🌐 Live Demo: {project.liveDemo}
-                      </p>
-                    </motion.div>
-                  )}
+         
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech, index) => (
@@ -156,25 +152,17 @@ const ProjectsSection = () => {
                   </div>
 
                   <div className="flex space-x-4 mt-auto">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
+                    <motion.a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.12, backgroundColor: '#2563eb' }}
                       whileTap={{ scale: 0.95 }}
                       className="flex items-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200"
                     >
                       <Github className="w-4 h-4" />
                       <span className="text-sm">Code</span>
-                    </motion.button>
-                    
-                    {project.liveDemo && (
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        <span className="text-sm">Live</span>
-                      </motion.button>
-                    )}
+                    </motion.a>
                   </div>
                 </div>
 
@@ -207,14 +195,17 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <motion.button
+          <motion.a
+            href="https://github.com/adiraj66132"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-700 hover:border-gray-600 text-white rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-gray-500/25"
           >
             <Github className="w-6 h-6" />
             <span className="text-lg font-medium">View All Projects on GitHub</span>
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </section>

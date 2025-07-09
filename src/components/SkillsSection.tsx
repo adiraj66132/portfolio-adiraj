@@ -2,166 +2,118 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const SkillsSection = () => {
+  // Updated skills list with new skills from public folder
   const skills = [
-    { name: "ReactJS", icon: "/placeholder.svg?height=40&width=40&text=React", color: "from-blue-400 to-cyan-500" },
-    { name: "Tailwind CSS", icon: "/placeholder.svg?height=40&width=40&text=Tailwind", color: "from-cyan-400 to-blue-500" },
-    { name: "HTML5 / CSS3", icon: "/placeholder.svg?height=40&width=40&text=HTML", color: "from-orange-400 to-red-500" },
-    { name: "Bootstrap", icon: "/placeholder.svg?height=40&width=40&text=Bootstrap", color: "from-purple-400 to-purple-600" },
-    { name: "Next.js", icon: "/placeholder.svg?height=40&width=40&text=Next", color: "from-gray-800 to-black" },
-    { name: "Express.js", icon: "/placeholder.svg?height=40&width=40&text=Express", color: "from-gray-400 to-gray-600" },
-    { name: "Python", icon: "/placeholder.svg?height=40&width=40&text=Python", color: "from-yellow-400 to-blue-500" },
-    { name: "C/C++", icon: "/placeholder.svg?height=40&width=40&text=C++", color: "from-blue-500 to-purple-600" },
-    { name: "Rust", icon: "/placeholder.svg?height=40&width=40&text=Rust", color: "from-orange-500 to-red-600" },
-    { name: "Node.js", icon: "/placeholder.svg?height=40&width=40&text=Node", color: "from-green-400 to-green-600" },
-    { name: "Firebase", icon: "/placeholder.svg?height=40&width=40&text=Firebase", color: "from-yellow-400 to-orange-500" },
-    { name: "npm", icon: "/placeholder.svg?height=40&width=40&text=NPM", color: "from-red-500 to-pink-500" },
+    { name: "ReactJS", image: "react.png" },
+    { name: "Redux", image: "redux.png" },
+    { name: "TypeScript", image: "TypeScript.png" },
+    { name: "JavaScript", image: "js.png" },
+    { name: "Tailwind CSS", image: "tailwind.png" },
+    { name: "shadcn/ui", image: "shadcn.png" },
+    { name: "HTML5 / CSS3", image: "css.png" },
+    { name: "Bootstrap", image: "bootstrap.png" },
+    { name: "Next.js", image: "nextjs-icon.png" },
+    { name: "Node.js", image: "node.png" },
+    { name: "Express.js", image: "Express.png" },
+    { name: "Socket.io", image: "Socket.io.png" },
+    { name: "Python", image: "Python.png" },
+    { name: "FastAPI", image: "FastAPI.png" },
+    { name: "C/C++", image: "c++.png" },
+    { name: "Rust", image: "rust.png" },
+    { name: "MongoDB", image: "MongoDB.png" },
+    { name: "MySQL", image: "MySQL.png" },
+    { name: "PostgresSQL", image: "PostgresSQL.png" },
+    { name: "Supabase", image: "Supabase.png" },
+    { name: "Firebase", image: "Firebase.png" },
+    { name: "NPM", image: "NPM.png" },
+    { name: "Vercel", image: "Vercel.png" },
+    { name: "Git", image: "git.png" },
+    { name: "GitHub", image: "GitHub.png" },
+    { name: "Figma", image: "figma.png" },
+    { name: "Canva", image: "Canva.png" },
+    { name: "Ant Design", image: "Ant Design.png" },
+    { name: "Postman", image: "Postman.png" },
   ];
 
-  const SkillCard = ({ skill, index }: { skill: any, index: number }) => (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8, y: 50 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ 
-        duration: 0.6, 
-        delay: index * 0.1,
-        ease: "easeOut"
-      }}
-      viewport={{ once: true }}
-      whileHover={{ 
-        scale: 1.05, 
-        y: -10,
-        transition: { duration: 0.3 }
-      }}
-      className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-500/50 transition-all duration-500"
+  // Split skills into two rows
+  const mid = Math.ceil(skills.length / 2);
+  const skillsRows = [skills.slice(0, mid), skills.slice(mid)];
+
+  // Combine both rows for a single seamless marquee
+  const allSkills = [...skillsRows[0], ...skillsRows[1]];
+
+  // Updated SkillCard for new skill structure (bigger logos, reduced gap, hover effect, aria-label)
+  const SkillCard = ({ skill }: { skill: { name: string; image: string } }) => (
+    <div
+      className="flex flex-col items-center justify-center min-w-[150px] mx-2 group"
+      aria-label={skill.name}
     >
-      <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl" 
-           style={{ background: `linear-gradient(135deg, ${skill.color.split(' ')[1]} 0%, ${skill.color.split(' ')[3]} 100%)` }} />
-      
-      <div className="relative z-10 flex flex-col items-center text-center space-y-4">
-        <motion.div 
-          className="w-12 h-12 flex items-center justify-center"
-          whileHover={{ scale: 1.2, rotate: 5 }}
-          transition={{ duration: 0.3 }}
-        >
-          <img 
-            src={skill.icon} 
-            alt={skill.name} 
-            className="w-10 h-10 object-contain"
-          />
-        </motion.div>
-        
-        <h3 className="text-white font-semibold text-lg group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-500 transition-all duration-300">
-          {skill.name}
-        </h3>
-        
-        <motion.div 
-          className="w-full h-1 bg-gray-700 rounded-full overflow-hidden"
-          initial={{ width: 0 }}
-          whileInView={{ width: "100%" }}
-          transition={{ duration: 1, delay: index * 0.1 }}
-          viewport={{ once: true }}
-        >
-          <motion.div
-            className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
-            initial={{ width: 0 }}
-            whileInView={{ width: "100%" }}
-            transition={{ duration: 1.5, delay: index * 0.1 + 0.5, ease: "easeOut" }}
-            viewport={{ once: true }}
-          />
-        </motion.div>
+      <div className="w-20 h-20 mb-3 flex items-center justify-center rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:shadow-blue-400/40"
+        style={{ willChange: 'transform' }}
+      >
+        <img
+          src={`/${skill.image}`}
+          alt={skill.name}
+          className="w-16 h-16 object-contain drop-shadow-md"
+          loading="lazy"
+        />
       </div>
-    </motion.div>
+      <span className="text-white font-semibold text-base text-center mt-1 tracking-wide">
+        {skill.name}
+      </span>
+    </div>
   );
 
   return (
     <section className="py-20 px-4 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        {Array.from({ length: 20 }, (_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-blue-500/20 rounded-full"
-            animate={{
-              x: [0, 100, 0],
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 8 + i * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </div>
-
       <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <motion.h2 
-            className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          >
+        <div className="text-center mb-16">
+          <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             Skills & Technologies
-          </motion.h2>
-          <motion.p 
-            className="text-xl text-gray-400 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Crafting digital experiences with cutting-edge technologies and creative passion
-          </motion.p>
-        </motion.div>
-
-        {/* Moving Skills Grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6"
-        >
-          {skills.map((skill, index) => (
-            <SkillCard key={skill.name} skill={skill} index={index} />
-          ))}
-        </motion.div>
-
-        {/* Floating Animation Container */}
-        <motion.div
-          className="mt-16 flex justify-center"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="text-center"
+          </p>
+        </div>
+        {/* Single Seamless Marquee Row */}
+        <div className="w-full flex justify-center overflow-x-hidden">
+          <div
+            className={`marquee flex flex-nowrap items-center gap-4 py-6`}
+            style={{
+              width: `${allSkills.length * 150 * 2 + 16 * allSkills.length * 2}px`,
+              minWidth: '100vw',
+              maxWidth: 'none',
+            }}
           >
-            <p className="text-gray-500 text-sm">Scroll to explore more</p>
-            <motion.div
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="mt-2"
-            >
-              ↓
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            {[...allSkills, ...allSkills].map((skill, index) => (
+              // key is set on the element, not passed as a prop
+              <div key={skill.name + '-' + index}>
+                <SkillCard skill={skill} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+      <style>{`
+        .marquee {
+          display: flex;
+          will-change: transform;
+          animation: marquee-left 24s linear infinite;
+        }
+        @keyframes marquee-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .scrollbar-thin {
+          scrollbar-width: thin;
+        }
+        .scrollbar-thumb-blue-700\/40::-webkit-scrollbar-thumb {
+          background: rgba(29, 78, 216, 0.4);
+        }
+        .scrollbar-track-gray-800\/40::-webkit-scrollbar-track {
+          background: rgba(31, 41, 55, 0.4);
+        }
+      `}</style>
     </section>
   );
 };

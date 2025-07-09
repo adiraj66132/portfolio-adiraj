@@ -1,8 +1,23 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Loader2, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Loader2, Github, Linkedin } from 'lucide-react';
 import toast from 'react-hot-toast';
+
+const XLogo = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    width={props.width || 20}
+    height={props.height || 20}
+    {...props}
+  >
+    <path
+      d="M17.53 2.47a1.75 1.75 0 0 1 2.47 2.47L14.94 10l5.06 5.06a1.75 1.75 0 1 1-2.47 2.47L12.47 12l-5.06 5.06a1.75 1.75 0 1 1-2.47-2.47L9.06 10 3.99 4.94A1.75 1.75 0 1 1 6.47 2.47L12 8l5.53-5.53Z"
+      fill="currentColor"
+    />
+  </svg>
+);
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -39,19 +54,19 @@ const ContactSection = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "hello@swayam.dev",
+      value: "adirajk03@gmail.com",
       color: "from-blue-500 to-cyan-500",
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
+      value: "+91 9101358456",
       color: "from-green-500 to-emerald-500",
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "San Francisco, CA",
+      value: "India, Assam",
       color: "from-purple-500 to-pink-500",
     },
   ];
@@ -59,7 +74,7 @@ const ContactSection = () => {
   const socialLinks = [
     { icon: Github, href: "#", color: "hover:text-gray-400" },
     { icon: Linkedin, href: "#", color: "hover:text-blue-400" },
-    { icon: Twitter, href: "#", color: "hover:text-cyan-400" },
+    { icon: XLogo, href: "#", color: "hover:text-cyan-400" },
   ];
 
   return (
@@ -123,12 +138,48 @@ const ContactSection = () => {
             <div className="pt-6">
               <h4 className="text-lg font-medium text-white mb-4">Follow Me</h4>
               <div className="flex space-x-4">
-                {socialLinks.map((social, index) => {
+                {[
+                  {
+                    icon: Github,
+                    href: "https://github.com/adiraj66132",
+                    color: "hover:text-gray-400",
+                    label: "GitHub"
+                  },
+                  {
+                    icon: Linkedin,
+                    href: "https://www.linkedin.com/in/adiraj-kashyap-7b607736b/",
+                    color: "hover:text-blue-400",
+                    label: "LinkedIn"
+                  },
+                  {
+                    // Inline SVG for X (Twitter) logo
+                    icon: (props: React.SVGProps<SVGSVGElement>) => (
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                        {...props}
+                      >
+                        <path
+                          d="M17.53 3H21L13.47 11.4L22.24 21H16.08L11.01 15.19L5.29 21H2L10.04 12.13L1.66 3H8.01L12.56 8.32L17.53 3ZM16.41 19.13H18.19L7.7 4.77H5.81L16.41 19.13Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    ),
+                    href: "https://x.com/adiraj_k03",
+                    color: "hover:text-cyan-400",
+                    label: "Twitter"
+                  }
+                ].map((social, index) => {
                   const IconComponent = social.icon;
                   return (
                     <motion.a
                       key={index}
                       href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                       className={`p-3 bg-gray-800 rounded-lg text-gray-400 ${social.color} transition-all duration-300 hover:shadow-lg`}
