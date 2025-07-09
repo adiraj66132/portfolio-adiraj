@@ -2,6 +2,8 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import HighlightsSection from '@/components/HighlightsSection';
+import SkillsSection from '@/components/SkillsSection';
+import ProjectsSection from '@/components/ProjectsSection';
 import ContactSection from '@/components/ContactSection';
 import { Toaster } from 'react-hot-toast';
 
@@ -21,6 +23,8 @@ const Index = () => {
       />
       <HeroSection />
       <HighlightsSection />
+      <SkillsSection />
+      <ProjectsSection />
       <ContactSection />
     </div>
   );

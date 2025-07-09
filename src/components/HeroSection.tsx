@@ -192,7 +192,6 @@ const HeroSection = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeInOut",
       },
     },
   };
@@ -215,7 +214,6 @@ const HeroSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeInOut",
       },
     },
   };
@@ -237,7 +235,7 @@ const HeroSection = () => {
           className="mb-6"
         >
           <h1 className="text-8xl md:text-9xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            {"Swayam".split("").map((letter, index) => (
+            {"Adiraj".split("").map((letter, index) => (
               <motion.span key={index} variants={letterVariants} className="inline-block">
                 {letter}
               </motion.span>
