@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Palette, Zap, BarChart3, Globe, Smartphone, Database, Shield } from 'lucide-react';
@@ -78,7 +77,7 @@ const HighlightsSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: "easeInOut",
       },
     },
   };
