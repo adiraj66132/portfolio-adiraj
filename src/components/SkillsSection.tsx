@@ -1,21 +1,20 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
 const SkillsSection = () => {
   const skills = [
-    { name: "ReactJS", icon: "⚛️", color: "from-blue-400 to-cyan-500" },
-    { name: "Tailwind CSS", icon: "🎨", color: "from-cyan-400 to-blue-500" },
-    { name: "HTML5 / CSS3", icon: "🌐", color: "from-orange-400 to-red-500" },
-    { name: "Bootstrap", icon: "🅱️", color: "from-purple-400 to-purple-600" },
-    { name: "Angular", icon: "🅰️", color: "from-red-500 to-red-600" },
-    { name: "Express.js", icon: "⚡", color: "from-gray-400 to-gray-600" },
-    { name: "Python", icon: "🐍", color: "from-yellow-400 to-blue-500" },
-    { name: "C/C++", icon: "💻", color: "from-blue-500 to-purple-600" },
-    { name: "Rust", icon: "🦀", color: "from-orange-500 to-red-600" },
-    { name: "Node.js", icon: "🟢", color: "from-green-400 to-green-600" },
-    { name: "Firebase", icon: "🔥", color: "from-yellow-400 to-orange-500" },
-    { name: "npm", icon: "📦", color: "from-red-500 to-pink-500" },
+    { name: "ReactJS", icon: "/placeholder.svg?height=40&width=40&text=React", color: "from-blue-400 to-cyan-500" },
+    { name: "Tailwind CSS", icon: "/placeholder.svg?height=40&width=40&text=Tailwind", color: "from-cyan-400 to-blue-500" },
+    { name: "HTML5 / CSS3", icon: "/placeholder.svg?height=40&width=40&text=HTML", color: "from-orange-400 to-red-500" },
+    { name: "Bootstrap", icon: "/placeholder.svg?height=40&width=40&text=Bootstrap", color: "from-purple-400 to-purple-600" },
+    { name: "Next.js", icon: "/placeholder.svg?height=40&width=40&text=Next", color: "from-gray-800 to-black" },
+    { name: "Express.js", icon: "/placeholder.svg?height=40&width=40&text=Express", color: "from-gray-400 to-gray-600" },
+    { name: "Python", icon: "/placeholder.svg?height=40&width=40&text=Python", color: "from-yellow-400 to-blue-500" },
+    { name: "C/C++", icon: "/placeholder.svg?height=40&width=40&text=C++", color: "from-blue-500 to-purple-600" },
+    { name: "Rust", icon: "/placeholder.svg?height=40&width=40&text=Rust", color: "from-orange-500 to-red-600" },
+    { name: "Node.js", icon: "/placeholder.svg?height=40&width=40&text=Node", color: "from-green-400 to-green-600" },
+    { name: "Firebase", icon: "/placeholder.svg?height=40&width=40&text=Firebase", color: "from-yellow-400 to-orange-500" },
+    { name: "npm", icon: "/placeholder.svg?height=40&width=40&text=NPM", color: "from-red-500 to-pink-500" },
   ];
 
   const SkillCard = ({ skill, index }: { skill: any, index: number }) => (
@@ -40,11 +39,15 @@ const SkillsSection = () => {
       
       <div className="relative z-10 flex flex-col items-center text-center space-y-4">
         <motion.div 
-          className="text-4xl"
+          className="w-12 h-12 flex items-center justify-center"
           whileHover={{ scale: 1.2, rotate: 5 }}
           transition={{ duration: 0.3 }}
         >
-          {skill.icon}
+          <img 
+            src={skill.icon} 
+            alt={skill.name} 
+            className="w-10 h-10 object-contain"
+          />
         </motion.div>
         
         <h3 className="text-white font-semibold text-lg group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-500 transition-all duration-300">
